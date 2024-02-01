@@ -10,8 +10,7 @@ model = YOLO('yolov8s.pt')  # load a pretrained model (recommended for training)
 # model.train(data='ultralytics/cfg/datasets/coco128.yaml', batch =16, epochs=10, imgsz=640)
 model.train(data='my_dataset/bolt1/bolt_class.yaml', 
             batch =4, 
-            epochs=10,
-            imgsz=640,
-            save_dir = 'runs/yolov8s_10epoch'
+            epochs=30,
+            imgsz=640
             )
 
