@@ -1,4 +1,6 @@
 my_dataset/
+train.py
+val.py
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
