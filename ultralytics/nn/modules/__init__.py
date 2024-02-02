@@ -36,6 +36,8 @@ from .block import (
     Proto,
     RepC3,
     ResNetLayer,
+    BasicStage, PatchEmbed_FasterNet, PatchMerging_FasterNet,
+
 )
 from .conv import (
     CBAM,
@@ -114,4 +116,6 @@ __all__ = (
     "MLP",
     "ResNetLayer",
     "OBB",
+    'BasicStage', 'PatchEmbed_FasterNet', 'PatchMerging_FasterNet',
+
 )
