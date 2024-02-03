@@ -1,6 +1,8 @@
+*.jpg
 my_dataset/
 train.py
 val.py
+cam_results/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

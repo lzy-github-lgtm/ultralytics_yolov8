@@ -38,6 +38,8 @@ from .block import (
     ResNetLayer,
     BasicStage, PatchEmbed_FasterNet, PatchMerging_FasterNet,
     BiLevelRoutingAttention,
+    ASFF2, ASFF3,
+
 
 )
 from .conv import (
@@ -119,4 +121,5 @@ __all__ = (
     "OBB",
     'BasicStage', 'PatchEmbed_FasterNet', 'PatchMerging_FasterNet',
     'BiLevelRoutingAttention',
+    'ASFF2', 'ASFF3',
 )
