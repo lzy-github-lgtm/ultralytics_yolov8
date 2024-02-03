@@ -41,6 +41,7 @@ from ultralytics.nn.modules import (
     RTDETRDecoder,
     Segment,
     BasicStage, PatchEmbed_FasterNet, PatchMerging_FasterNet,
+    BiLevelRoutingAttention,
 )
 from ultralytics.utils import DEFAULT_CFG_DICT, DEFAULT_CFG_KEYS, LOGGER, colorstr, emojis, yaml_load
 from ultralytics.utils.checks import check_requirements, check_suffix, check_yaml
@@ -820,6 +821,9 @@ def parse_model(d, ch, verbose=True):  # model_dict, input_channels(3)
             c2 = args[1] if args[3] else args[1] * 4
         elif m is nn.BatchNorm2d:
             args = [ch[f]]
+        elif m in [BiLevelRoutingAttention]:  
+            c2 = ch[f]
+            args = [c2, *args[0:]]
         elif m is Concat:
             c2 = sum(ch[x] for x in f)
         elif m in (Detect, Segment, Pose, OBB):
