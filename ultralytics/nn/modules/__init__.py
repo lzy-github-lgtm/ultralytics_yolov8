@@ -39,7 +39,10 @@ from .block import (
     BasicStage, PatchEmbed_FasterNet, PatchMerging_FasterNet,
     BiLevelRoutingAttention,
     ASFF2, ASFF3,
-
+    SimAM, ECA, SpatialGroupEnhance, TripletAttention, CoordAtt, GAMAttention,
+                    SE, ShuffleAttention, SKAttention, DoubleAttention, CoTAttention, 
+                    MHSA, S2Attention, NAMAttention, CrissCrossAttention,
+                    SequentialPolarizedSelfAttention, ParallelPolarizedSelfAttention, ParNetAttention,
 
 )
 from .conv import (
@@ -122,4 +125,8 @@ __all__ = (
     'BasicStage', 'PatchEmbed_FasterNet', 'PatchMerging_FasterNet',
     'BiLevelRoutingAttention',
     'ASFF2', 'ASFF3',
+    'SimAM', 'ECA', 'SpatialGroupEnhance', 'TripletAttention', 'CoordAtt', 'GAMAttention',
+           'SE', 'ShuffleAttention', 'SKAttention', 'DoubleAttention', 'CoTAttention', 
+            'MHSA', 'S2Attention', 'NAMAttention', 'CrissCrossAttention',
+           'SequentialPolarizedSelfAttention', 'ParallelPolarizedSelfAttention', 'ParNetAttention',
 )

@@ -8,6 +8,7 @@ import torch
 import torch.nn as nn
 
 from ultralytics.nn.modules import (
+    CBAM,
     AIFI,
     C1,
     C2,
@@ -43,6 +44,10 @@ from ultralytics.nn.modules import (
     BasicStage, PatchEmbed_FasterNet, PatchMerging_FasterNet,
     BiLevelRoutingAttention,
     ASFF2, ASFF3,
+    SimAM, ECA, SpatialGroupEnhance, TripletAttention, CoordAtt, GAMAttention,
+        SE, ShuffleAttention, SKAttention, DoubleAttention, CoTAttention,
+        MHSA, S2Attention, NAMAttention, CrissCrossAttention,
+        SequentialPolarizedSelfAttention, ParallelPolarizedSelfAttention, ParNetAttention,
 )
 from ultralytics.utils import DEFAULT_CFG_DICT, DEFAULT_CFG_KEYS, LOGGER, colorstr, emojis, yaml_load
 from ultralytics.utils.checks import check_requirements, check_suffix, check_yaml
@@ -823,6 +828,26 @@ def parse_model(d, ch, verbose=True):  # model_dict, input_channels(3)
         elif m is nn.BatchNorm2d:
             args = [ch[f]]
 
+        # ------------Attention ↆ------------
+        elif m in [CBAM]:
+            args = [ch[f]]
+
+        elif m in [SimAM, ECA, SpatialGroupEnhance, TripletAttention]:
+            args = [*args[:]]
+        elif m in [CoordAtt, GAMAttention]:
+            c1, c2 = ch[f], args[0]
+            if c2 != nc:  # if c2 not equal to number of classes (i.e. for Classify() output)
+                c2 = make_divisible(min(c2, max_channels) * width, 8)
+            args = [c1, c2, *args[1:]]
+        elif m in [SE, ShuffleAttention, SKAttention, DoubleAttention, CoTAttention, MHSA]:
+            c1 = ch[f]
+            args = [c1, *args[0:]]
+        elif m in [S2Attention, NAMAttention, CrissCrossAttention, SequentialPolarizedSelfAttention,
+                   ParallelPolarizedSelfAttention, ParNetAttention]:
+            c1 = ch[f]
+            args = [c1]
+        # ------------Attention ↑--------------
+            
         elif m is ASFF2:
             c1, c2 = [ch[f[0]], ch[f[1]]], args[0]
             c2 = make_divisible(min(c2, max_channels) * width, 8)
