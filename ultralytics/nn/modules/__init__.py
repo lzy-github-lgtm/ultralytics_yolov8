@@ -43,6 +43,7 @@ from .block import (
                     SE, ShuffleAttention, SKAttention, DoubleAttention, CoTAttention, 
                     MHSA, S2Attention, NAMAttention, CrissCrossAttention,
                     SequentialPolarizedSelfAttention, ParallelPolarizedSelfAttention, ParNetAttention,
+    C2f_SE,C2f_CA,C2f_ECA,
 
 )
 from .conv import (
@@ -59,6 +60,7 @@ from .conv import (
     LightConv,
     RepConv,
     SpatialAttention,
+    C2f_CBAM
 )
 from .head import OBB, Classify, Detect, Pose, RTDETRDecoder, Segment
 from .transformer import (
@@ -129,4 +131,5 @@ __all__ = (
            'SE', 'ShuffleAttention', 'SKAttention', 'DoubleAttention', 'CoTAttention', 
             'MHSA', 'S2Attention', 'NAMAttention', 'CrissCrossAttention',
            'SequentialPolarizedSelfAttention', 'ParallelPolarizedSelfAttention', 'ParNetAttention',
+    'C2f_SE','C2f_CA','C2f_ECA','C2f_CBAM'
 )
