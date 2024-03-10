@@ -19,7 +19,7 @@ def copy_files(src_dir, dst_dir, filenames, extension):
 
     return missing_files
 
-def split_and_copy_dataset(image_dir, label_dir, output_dir, train_ratio=0.8, valid_ratio=0.2, test_ratio=0):
+def split_and_copy_dataset(image_dir, label_dir, output_dir, train_ratio=0.5, valid_ratio=0.5, test_ratio=0):
     # 获取所有图像文件的文件名（不包括文件扩展名）
     image_filenames = [os.path.splitext(f)[0] for f in os.listdir(image_dir)]
 
@@ -58,7 +58,7 @@ def split_and_copy_dataset(image_dir, label_dir, output_dir, train_ratio=0.8, va
 # 使用例子
 image_dir = '/home/ac522/lzy/380-label-20231212/images'
 label_dir = '/home/ac522/lzy/380-label-20231212/yolotxt1'
-output_dir = './my_dataset/bolt3'
+output_dir = './my_dataset/train_val1:1'
 
 split_and_copy_dataset(image_dir, label_dir, output_dir)
 

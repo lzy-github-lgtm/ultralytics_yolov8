@@ -156,8 +156,8 @@ class yolov8_cam:
 def get_params():
     # 定义默认参数
     params = {
-        'weight': 'yolov8n.pt',
-        'cfg': 'ultralytics/cfg/models/v8/yolov8.yaml',
+        'weight': '/home/ac522/lzy/ultralytics_yolov8/runs/detect/train2/weights/best.pt',
+        'cfg': 'ultralytics/cfg/models/v8/yolov8-AFPN.yaml',
         'device': 'cuda:0',
         'method': 'GradCAM',  # EigenCAM, EigenGradCAM, GradCAM, GradCAMElementWise, GradCAMPlusPlus, HiResCAM, LayerCAM, RandomCAM, ScoreCAM, XGradCAM)
         'layer': 'model.model[-4]',
@@ -171,5 +171,5 @@ def get_params():
 if __name__ == '__main__':
     model = yolov8_cam(**get_params())
     model(
-        'bus.jpg', # 目标图像，报错请使用绝对路径
+        '/home/ac522/lzy/ultralytics_yolov8/my_dataset/hardDetectImg/N-0-33-bolthead.jpg', # 目标图像，报错请使用绝对路径
         './cam_results') # 保存的文件位置
