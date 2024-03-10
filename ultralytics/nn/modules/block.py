@@ -562,7 +562,7 @@ class PatchMerging_FasterNet(nn.Module):
         x = self.reduction(x)
         return x
 
-# --------------------------FasterNet Begin----------------------------
+# --------------------------FasterNet End----------------------------
 
 
 # --------------------------BiFormer  Begin----------------------------
