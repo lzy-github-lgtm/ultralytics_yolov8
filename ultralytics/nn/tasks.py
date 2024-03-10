@@ -48,6 +48,7 @@ from ultralytics.nn.modules import (
         SE, ShuffleAttention, SKAttention, DoubleAttention, CoTAttention,
         MHSA, S2Attention, NAMAttention, CrissCrossAttention,
         SequentialPolarizedSelfAttention, ParallelPolarizedSelfAttention, ParNetAttention,
+    C2f_SE,C2f_CA,C2f_ECA,C2f_CBAM,
 )
 from ultralytics.utils import DEFAULT_CFG_DICT, DEFAULT_CFG_KEYS, LOGGER, colorstr, emojis, yaml_load
 from ultralytics.utils.checks import check_requirements, check_suffix, check_yaml
@@ -804,13 +805,14 @@ def parse_model(d, ch, verbose=True):  # model_dict, input_channels(3)
             C3x,
             RepC3,
             BasicStage, PatchEmbed_FasterNet, PatchMerging_FasterNet,
+            C2f_SE,C2f_CA,C2f_ECA,C2f_CBAM,
         ):
             c1, c2 = ch[f], args[0]
             if c2 != nc:  # if c2 not equal to number of classes (i.e. for Classify() output)
                 c2 = make_divisible(min(c2, max_channels) * width, 8)
 
             args = [c1, c2, *args[1:]]
-            if m in (BottleneckCSP, C1, C2, C2f, C3, C3TR, C3Ghost, C3x, RepC3):
+            if m in (BottleneckCSP, C1, C2, C2f, C3, C3TR, C3Ghost, C3x, RepC3,C2f_SE,C2f_CA,C2f_ECA,C2f_CBAM,):
                 args.insert(2, n)  # number of repeats
                 n = 1
             elif m in [BasicStage]:

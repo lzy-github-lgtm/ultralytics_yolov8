@@ -1,0 +1,4 @@
+1.数据集准备
+	1.使用 /home/ac522/lzy/objectDetectionDatasets/voc_to_yoloV5.py将标注数据集
+	为VOC格式的.xml文件转换为yolo格式的.txt文件
+	2.使用%当前路径/tool下面的splitDatasets.py划分训练验证集
